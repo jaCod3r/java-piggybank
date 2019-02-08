@@ -1,18 +1,27 @@
 package app.ajuber;
 
-public class Dollar {
+public class Dollar implements Money {
 
 
-  private double total;
+  private double total = 1;
   private double worth = 1.00;
+  private double coinsInserted;
 
-  public double add(double numberOfCoins) {
-    double newTotal=worth*numberOfCoins;
-    total += newTotal;
-    return total;
+  public Dollar() {
+    total = total*worth;
   }
 
-  public void getTotal() {
-    System.out.println("The number of dollar adds up to " + total + " dollars");
+  public Dollar(double coinsInserted) {
+    total=worth*coinsInserted;
+  }
+
+  @Override
+  public double balance() {
+    return this.total;
+  }
+
+  @Override
+  public String detail() {
+    return "$" + this.total;
   }
 }

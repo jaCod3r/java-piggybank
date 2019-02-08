@@ -1,17 +1,27 @@
 package app.ajuber;
 
-public class Quarter {
+public class Quarter implements Money {
 
-  private double total;
+  private double total = 1;
   private double worth = 0.25;
+  private double coinsInserted = 1;
 
-  public double add(double numberOfCoins) {
-    double newTotal=worth*numberOfCoins;
-    total += newTotal;
-    return total;
+  public Quarter() {
+    total = total*worth;
   }
 
-  public void getTotal() {
-    System.out.println("The number of quarters adds up to " + total + " cents!");
+  public Quarter(double coinsInserted) {
+    this.coinsInserted = coinsInserted;
+    total=worth*coinsInserted;
+  }
+
+  @Override
+  public double balance() {
+    return this.total;
+  }
+
+  @Override
+  public String detail() {
+    return this.coinsInserted + " Quarter";
   }
 }
